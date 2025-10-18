@@ -1,0 +1,50 @@
+POST http://localhost:8080/contacts
+Content-Type: application/json
+
+{
+    "firstName": "Ben",
+    "lastName": "Lemmon",
+    "email": "gusgus84@yahoo.com",
+    "favoriteColor": "Blue",
+    "birthday": "08-26-1984"
+}
+
+###
+PUT http://localhost:8080/contacts/68e1b09829c08a24beff87ac
+Content-Type: application/json
+
+{
+    "email": "benlemmon99@yahoo.com"
+}
+
+###
+DELETE http://localhost:8080/contacts/68e1b09829c08a24beff87ac
+
+###
+GET http://localhost:8080/contacts
+
+###
+GET https://cse341-node-db8n.onrender.com/contacts 
+
+###
+POST https://cse341-node-db8n.onrender.com/contacts
+Content-Type: application/json
+
+{
+    "firstName": "Peter",
+    "lastName": "Lemmon",
+    "email": "petereater@yahoo.com",
+    "favoriteColor": "red",
+    "birthday": "04-01-2014"
+}
+
+###
+PUT https://cse341-node-db8n.onrender.com/contacts/68e1981d465f1687ee41d34a
+Content-Type: application/json
+
+{
+    "firstName": "Benjamin"
+}
+
+###
+DELETE https://cse341-node-db8n.onrender.com/contacts/68e1981d465f1687ee41d34a 
