@@ -1,50 +1,132 @@
-POST http://localhost:8080/contacts
+//Users
+GET http://localhost:8080/users
+
+###
+GET http://localhost:8080/users/68f45b89b6a1aa41e9a686eb
+
+###
+POST http://localhost:8080/users
 Content-Type: application/json
 
 {
-    "firstName": "Ben",
+    "userName": "MJLemmon",
+    "firstName": "Michael",
     "lastName": "Lemmon",
-    "email": "gusgus84@yahoo.com",
-    "favoriteColor": "Blue",
-    "birthday": "08-26-1984"
+    "email": "michael@yahoo.com",
+    "password": "Mikey",
+    "age": 5,
+    "weight": 175
 }
 
 ###
-PUT http://localhost:8080/contacts/68e1b09829c08a24beff87ac
+PUT http://localhost:8080/users/68f45f28b6a1aa41e9a686ed
 Content-Type: application/json
 
 {
-    "email": "benlemmon99@yahoo.com"
+    "userName": "ML"
 }
 
 ###
-DELETE http://localhost:8080/contacts/68e1b09829c08a24beff87ac
+DELETE http://localhost:8080/users/68f45ba8b6a1aa41e9a686ec
 
 ###
-GET http://localhost:8080/contacts
+
+
+//workoutSessions
+GET http://localhost:8080/workoutSessions
 
 ###
-GET https://cse341-node-db8n.onrender.com/contacts 
+GET http://localhost:8080/workoutSessions/68f4640fb6a1aa41e9a686ef
 
 ###
-POST https://cse341-node-db8n.onrender.com/contacts
+POST http://localhost:8080/workoutSessions
 Content-Type: application/json
 
 {
+    "user": "MJLemmon",
+    "date": "10-18-25",
+    "exercise": "Run",
+    "duration": "35 min",
+    "weight": 0,
+    "exertion": 8
+}
+
+###
+PUT http://localhost:8080/workoutSessions/68f4640fb6a1aa41e9a686ef
+Content-Type: application/json
+
+{
+    "weight": 0
+}
+
+###
+DELETE http://localhost:8080/workoutSessions/68f4649db6a1aa41e9a686f0
+
+###
+
+
+//onrender requests users
+GET https://cse341-personal-project-nxq4.onrender.com/users
+
+###
+GET https://cse341-personal-project-nxq4.onrender.com/users/68f45b89b6a1aa41e9a686eb
+
+###
+POST https://cse341-personal-project-nxq4.onrender.com/users
+Content-Type: application/json
+
+{
+    "userName": "PeterPal",
     "firstName": "Peter",
     "lastName": "Lemmon",
-    "email": "petereater@yahoo.com",
-    "favoriteColor": "red",
-    "birthday": "04-01-2014"
+    "email": "peterpal@yahoo.com",
+    "password": "passwrd",
+    "age": 11,
+    "weight": 110
 }
 
 ###
-PUT https://cse341-node-db8n.onrender.com/contacts/68e1981d465f1687ee41d34a
+PUT https://cse341-personal-project-nxq4.onrender.com/users/68f45b89b6a1aa41e9a686eb
 Content-Type: application/json
 
 {
-    "firstName": "Benjamin"
+    "email": "mjl@yahoo.com"
 }
 
 ###
-DELETE https://cse341-node-db8n.onrender.com/contacts/68e1981d465f1687ee41d34a 
+DELETE https://cse341-personal-project-nxq4.onrender.com/users/68f45f28b6a1aa41e9a686ed
+
+###
+
+
+//onrender requests workoutSessions
+GET https://cse341-personal-project-nxq4.onrender.com/workoutSessions
+
+###
+GET http://cse341-personal-project-nxq4.onrender.com/68f4640fb6a1aa41e9a686ef
+
+###
+POST http://cse341-personal-project-nxq4.onrender.com/workoutSessions
+Content-Type: application/json
+
+{
+    "user": "MJLemmon",
+    "date": "10-18-25",
+    "exercise": "Walk",
+    "duration": "30 min",
+    "weight": 20,
+    "exertion": 5
+}
+
+###
+PUT http://cse341-personal-project-nxq4.onrender.com/workoutSessions/68f4640fb6a1aa41e9a686ef
+Content-Type: application/json
+
+{
+    "weight": 0
+}
+
+###
+DELETE http://cse341-personal-project-nxq4.onrender.com/workoutSessions/68f4649db6a1aa41e9a686f0
+
+###

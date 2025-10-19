@@ -12,11 +12,14 @@
   ], 
   "components": {
     "schema": {
-      "contacts": 
+      "users": 
       {
           "type": "object",
-          "required": ["firstName", "lastName", "email", "favoriteColor", "birthday"],
+          "required": ["userName", "firstName", "lastName", "email", "password", "age", "weight"],
           "properties": {
+            "userName": {
+              "type": "string"
+            },
             "firstName": {
               "type": "string"
             },
@@ -26,11 +29,39 @@
             "email": {
               "type": "string"
             },
-            "favoriteColor": {
+            "password": {
               "type": "string"
             },
-            "birthday": {
+            "age": {
+              "type": "number"
+            },
+            "weight": {
+              "type": "number"
+            }
+          }
+        },
+        "workoutSessions": 
+        {
+          "type": "object",
+          "required": ["user", "date", "exercise", "duration", "weight", "exertion"],
+          "properties": {
+            "user": {
               "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "exercise": {
+              "type": "string"
+            },
+            "duration": {
+              "type": "string"
+            },
+            "weight": {
+              "type": "number"
+            },
+            "exertion": {
+              "type": "number"
             }
           }
         }
@@ -47,7 +78,7 @@
         }
       }
     },
-    "/contacts/": {
+    "/users/": {
       "get": {
         "description": "",
         "produces": [
@@ -66,7 +97,7 @@
           "name": "body",
           "in": "body",
           "schema": {
-              "$ref": "#/components/schema/contacts"
+              "$ref": "#/components/schema/users"
             }
           }
         ],
@@ -77,7 +108,7 @@
         }
       }
     },
-    "/contacts/{id}": {
+    "/users/{id}": {
       "get": {
         "description": "",
         "produces": [
@@ -111,7 +142,99 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/components/schema/contacts"
+              "$ref": "#/components/schema/users"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+
+  "/workoutSessions/": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+          "name": "body",
+          "in": "body",
+          "schema": {
+              "$ref": "#/components/schema/workoutSessions"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/workoutSessions/{id}": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id", 
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schema/workoutSessions"
             }
           }
         ],

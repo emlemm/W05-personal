@@ -1,0 +1,17 @@
+users
+    _id             | MongoDB_ID
+    firstName       | String
+    lastName        | String
+    email           | String
+    password        | String hashed
+    age             | Number
+    weight          | Number
+    exercises       | String []
+
+workout-sessions
+    user            | String (but should be MongoDB_ID??)
+    date            | Date
+    exercise        | String
+    duration        | String
+    weight          | Number
+    exertion        | Number

@@ -2,7 +2,7 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
 const db = () => {
-    return mongodb.getDb().db('CSE341W02Personal').collection('contacts')
+    return mongodb.getDb().db('FitnessProject').collection('users')
 }
 
 const getAllData = async (req, res, next) => { 
@@ -23,8 +23,8 @@ const getOneFromData = async (req, res, next) => {
 };
 
 const create = async (req, res, next) => {
-    const newContact = req.body;
-    const result = await db().insertOne(newContact);
+    const newUser = req.body;
+    const result = await db().insertOne(newUser);
     res.status(201).json(result);
 }
 
