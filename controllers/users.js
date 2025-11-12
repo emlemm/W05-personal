@@ -6,40 +6,71 @@ const db = () => {
 }
 
 const getAllData = async (req, res, next) => { 
-    const result = await db().find();
-    result.toArray().then((lists) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists);
-    });
+    try {
+        const result = await db().find();
+        result.toArray().then((lists) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(lists);
+        })
+        .catch((err) => {
+            res.status(500).json({
+                message: err.message || 'An error occured while retrieving the users from the database.'
+            });
+        });;
+    } catch (err) {
+        res.status(500).json(err);
+    } 
 };
 
 const getOneFromData = async (req, res, next) => {
-    const idFromList = new ObjectId(req.params.id);
-    const result = await db().find({_id: idFromList});
-    result.toArray().then((item) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(item);
-    });
+    try {
+        const idFromList = new ObjectId(req.params.id);
+        const result = await db().find({_id: idFromList});
+        result.toArray().then((item) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(item);
+        })
+        .catch((err) => {
+            res.status(500).json({
+                message: err.message || 'An error occured while retrieving the user from the database.'
+            });
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    } 
 };
 
 const create = async (req, res, next) => {
-    const newUser = req.body;
-    const result = await db().insertOne(newUser);
-    res.status(201).json(result);
-}
+    try {
+        const newUser = req.body;
+        const result = await db().insertOne(newUser);
+        res.status(201).json(result);
+    } catch (err) {
+        res.status(500).json(err);
+    } 
+};
 
 const updateOne = async (req, res, next) => {
-    const idFromList = new ObjectId(req.params.id);
-    const qry = {_id: idFromList};
-    const vals = {$set: req.body};
-    const result = await db().updateOne(qry, vals);
-    res.status(204).json(result);
-}
+    try {
+        const idFromList = new ObjectId(req.params.id);
+        const qry = {_id: idFromList};
+        const vals = {$set: req.body};
+        const result = await db().updateOne(qry, vals);
+        res.status(204).json(result);
+    } catch (err) {
+        res.status(500).json(err);
+    } 
+};
 
 const deleteOne = async (req, res, next) => {
-    const idFromList = new ObjectId(req.params.id);
-    const qry = {_id: idFromList};
-    const result = await db().deleteOne(qry);
-    res.status(200).json(result);
-}
+    try {
+        const idFromList = new ObjectId(req.params.id);
+        const qry = {_id: idFromList};
+        const result = await db().deleteOne(qry);
+        res.status(200).json(result);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
+
 module.exports = { getAllData, getOneFromData, create, updateOne, deleteOne };

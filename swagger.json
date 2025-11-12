@@ -7,6 +7,16 @@
   },
   "host": "localhost:8080",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "users",
+      "description": "Operations about users"
+    },
+    {
+      "name": "workoutSessions",
+      "description": "Operations about workoutSessions"
+    }
+  ],
   "schemes": [
     "http"
   ], 
@@ -80,18 +90,25 @@
     },
     "/users/": {
       "get": {
-        "description": "",
+        "tags": ["users"],
+        "summary": "Get all users",
+        "description": "This is to get all the users currently in the database",
         "produces": [
           "application/json"
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successful operation"
+          },
+          "500": {
+            "description": "An error occured"
           }
         }
       },
       "post": {
-        "description": "",
+        "tags": ["users"],
+        "summary": "Create new user",
+        "description": "This is to create a new user in the database",
         "parameters": [
           {
           "name": "body",
@@ -103,14 +120,19 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Successfully created new user"
+          },
+          "500": {
+            "description": "An error occured"
           }
         }
       }
     },
     "/users/{id}": {
       "get": {
-        "description": "",
+        "tags": ["users"],
+        "summary": "Get one user by id number",
+        "description": "This is to get one of the users currently in the database",
         "produces": [
           "application/json"
         ],
@@ -124,12 +146,17 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successful operation"
+          },
+          "500": {
+            "description": "An error occured"
           }
         }
       },
       "put": {
-        "description": "",
+        "tags": ["users"],
+        "summary": "Edit one user",
+        "description": "This is to edit one of the users currently in the database",
         "parameters": [
           {
             "name": "id", 
@@ -148,12 +175,17 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Successful operation"
+          },
+          "500": {
+            "description": "An error occured"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": ["users"],
+        "summary": "Delete one user",
+        "description": "This is to delete a single user out of the database",
         "parameters": [
           {
             "name": "id",
@@ -164,7 +196,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Deletion successful"
+          },
+          "500": {
+            "description": "An error occured"
           }
         }
       }
@@ -172,18 +207,25 @@
 
   "/workoutSessions/": {
       "get": {
-        "description": "",
+        "tags": ["workoutSessions"],
+        "summary": "Get all workout sessions",
+        "description": "This is to retrieve all of the workout sessions currently in the database",
         "produces": [
           "application/json"
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successful operation"
+          },
+          "500": {
+            "description": "An error occured"
           }
         }
       },
       "post": {
-        "description": "",
+        "tags": ["workoutSessions"],
+        "summary": "Create new workout session",
+        "description": "This is to create a new workout sessions and save it in the database",
         "parameters": [
           {
           "name": "body",
@@ -195,14 +237,19 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Successfully created new workout session"
+          },
+          "500": {
+            "description": "An error occured"
           }
         }
       }
     },
     "/workoutSessions/{id}": {
       "get": {
-        "description": "",
+        "tags": ["workoutSessions"],
+        "summary": "Get one workout session by id number",
+        "description": "This is to retrieve one of the workout sessions currently in the database",
         "produces": [
           "application/json"
         ],
@@ -216,12 +263,17 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successful operation"
+          },
+          "500": {
+            "description": "An error occured"
           }
         }
       },
       "put": {
-        "description": "",
+        "tags": ["workoutSessions"],
+        "summary": "Edit one workout session",
+        "description": "This is to edit one of the workout sessions currently in the database",
         "parameters": [
           {
             "name": "id", 
@@ -240,12 +292,17 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Successful operation"
+          },
+          "500": {
+            "description": "An error occured"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": ["workoutSessions"],
+        "summary": "Delete one workout session",
+        "description": "This is to delete one of the workout sessions currently in the database",
         "parameters": [
           {
             "name": "id",
@@ -256,7 +313,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Deletion Successful"
+          },
+          "500": {
+            "description": "An error occured"
           }
         }
       }

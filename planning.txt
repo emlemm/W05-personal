@@ -3,14 +3,14 @@ users
     firstName       | String
     lastName        | String
     email           | String
-    password        | String hashed
+    password        | String (hashed?)
     age             | Number
     weight          | Number
     exercises       | String []
 
 workout-sessions
-    user            | String (but should be MongoDB_ID??)
-    date            | Date
+    user            | String (but should tie to MongoDB_ID eventually)
+    date            | String
     exercise        | String
     duration        | String
     weight          | Number
