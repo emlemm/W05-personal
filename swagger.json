@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "My API",
-    "description": "Contacts API",
+    "description": "Fitness API",
     "version": "1.0.0"
   },
   "host": "localhost:8080",
@@ -20,6 +20,21 @@
   "schemes": [
     "http"
   ], 
+  "securityDefinitions": {
+      "myOAuth": {
+        "type": "oauth2",
+        "description": "This API uses OAuth 2 with the password grant flow",
+        "flow": "password",
+        "tokenUrl": "/oauth/token",
+        "scopes": {
+          "read_users": "Read your own user data",
+          "write_users": "Write your own user data",
+          "read_workoutSessions": "Read your own workout sessions",
+          "write_workoutSessions": "Write your own workout sessions",
+          "admin": "Read and write data that does not belong to you"
+        }
+      }
+  },
   "components": {
     "schema": {
       "users": 
@@ -93,6 +108,7 @@
         "tags": ["users"],
         "summary": "Get all users",
         "description": "This is to get all the users currently in the database",
+        "security": [{"myOAuth": ["admin"]}],
         "produces": [
           "application/json"
         ],
@@ -109,6 +125,9 @@
         "tags": ["users"],
         "summary": "Create new user",
         "description": "This is to create a new user in the database",
+        "security": [{
+          "myOAuth": ["admin"]
+        }],
         "parameters": [
           {
           "name": "body",
@@ -133,6 +152,9 @@
         "tags": ["users"],
         "summary": "Get one user by id number",
         "description": "This is to get one of the users currently in the database",
+        "security": [{
+          "myOAuth": ["admin"]
+        }],
         "produces": [
           "application/json"
         ],
@@ -157,6 +179,9 @@
         "tags": ["users"],
         "summary": "Edit one user",
         "description": "This is to edit one of the users currently in the database",
+        "security": [{
+          "myOAuth": ["admin"]
+        }],
         "parameters": [
           {
             "name": "id", 
@@ -186,6 +211,9 @@
         "tags": ["users"],
         "summary": "Delete one user",
         "description": "This is to delete a single user out of the database",
+        "security": [{
+          "myOAuth": ["admin"]
+        }],
         "parameters": [
           {
             "name": "id",
@@ -208,8 +236,11 @@
   "/workoutSessions/": {
       "get": {
         "tags": ["workoutSessions"],
-        "summary": "Get all workout sessions",
+        "summary": "Get all workout sessions for self",
         "description": "This is to retrieve all of the workout sessions currently in the database",
+        "security": [{
+          "myOAuth": ["read_workoutSessions"]
+        }],
         "produces": [
           "application/json"
         ],
@@ -226,6 +257,9 @@
         "tags": ["workoutSessions"],
         "summary": "Create new workout session",
         "description": "This is to create a new workout sessions and save it in the database",
+        "security": [{
+          "myOAuth": ["write_workoutSessions"]
+        }],
         "parameters": [
           {
           "name": "body",
@@ -250,6 +284,9 @@
         "tags": ["workoutSessions"],
         "summary": "Get one workout session by id number",
         "description": "This is to retrieve one of the workout sessions currently in the database",
+        "security": [{
+          "myOAuth": ["read_workoutSessions"]
+        }],
         "produces": [
           "application/json"
         ],
@@ -274,6 +311,9 @@
         "tags": ["workoutSessions"],
         "summary": "Edit one workout session",
         "description": "This is to edit one of the workout sessions currently in the database",
+        "security": [{
+          "myOAuth": ["write_workoutSessions"]
+        }],
         "parameters": [
           {
             "name": "id", 
@@ -303,6 +343,9 @@
         "tags": ["workoutSessions"],
         "summary": "Delete one workout session",
         "description": "This is to delete one of the workout sessions currently in the database",
+        "security": [{
+          "myOAuth": ["write_workoutSessions"]
+        }],
         "parameters": [
           {
             "name": "id",
